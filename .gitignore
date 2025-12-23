@@ -1,0 +1,50 @@
+# Ignore backup files
+*.bak
+*.bak.*
+
+# Ignore checkpoints for ML saving state of models
+*.ckpt
+
+# Ignore backup files
+*.old
+
+# Ignore Python bytecode files
+*.pyc
+
+# Ignore Mac system files
+.DS_Store
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Ignore entire vscode directory
+.vscode/
+
+# Ignore  files and directories in directory
+checkpoint
+
+# Ignore all log directories and log files
+logs/
+*.log
+
+# Ignore TensorFlow logs
+/tf_logs
+
+# Ignore image directories
+/images
+
+# Ignore any files or directories starting with "my_"
+my_*
+
+# Ignore protobuf files
+/person.proto
+
+# Ignore the files generated from the protobuf
+# This is the Python file generated from the protobuf definition
+/person.desc
+
+# Ignore Python automatic generated module from protocol buffer (protobuf)
+/person_pb2.py
+
+# Ignore datasets directory
+/datasets
