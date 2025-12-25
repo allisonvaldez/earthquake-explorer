@@ -36,3 +36,12 @@ my_*
 
 # Ignore Python automatic generated module from protocol buffer (protobuf)
 /person_pb2.py
+
+# Ignore node_modules
+node_modules/
+
+# Ignore .env
+.env
+
+# Ignore postman
+postman/
