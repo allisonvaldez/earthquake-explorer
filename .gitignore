@@ -43,5 +43,6 @@ node_modules/
 # Ignore .env
 .env
 
-# Ignore postman
-postman/
+# Ignore# Postman: ignore real environment files, keep collections
+ postman/environment.json
+ postman/*.env.json
