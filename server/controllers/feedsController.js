@@ -123,11 +123,11 @@ What this function does:
 1. exports: an object where functions or values are attached to be used in other files (a whole toolbox)
 2. exports.update(): a controller functionda
 */
-exports.remove = (req, res) > {
+exports.remove = (req, res) => {
     //Using the store remove function pass in the URL ID
     const ok = store.remove(req.params.id);
     // If its not able to be removed then control accordingly
-    if(!ok) return res.status(404).json({ error: "Feed not found!" });
+    if (!ok) return res.status(404).json({ error: "Feed not found!" });
     // Respond with the status
     res.status(204).send();
 };

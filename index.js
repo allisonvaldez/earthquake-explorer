@@ -21,7 +21,7 @@ app.use(logger);
 app.use("/api/feeds", require("./server/routes/feeds"));
 
 //  For all requests starting with /earthquakes connect it to  the earthquake router
-app.use("earthquakes", require("./sever/routes/earthquakes"));
+app.use("earthquakes", require("./server/routes/earthquakes"));
 
 // Catch and respond to thrown errors
 app.use(errorHandler);
@@ -29,5 +29,5 @@ app.use(errorHandler);
 // Set the Port to listen on 3000 and start the server locally and in production
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log("Server listening on port ${PORT}");
+    console.log(`Server listening on port ${PORT}`);
 });
