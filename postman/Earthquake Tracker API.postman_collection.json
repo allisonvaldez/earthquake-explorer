@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "d4a039e0-19e7-4d93-b7ab-082f98c702d1",
+		"name": "Earthquake Tracker API",
+		"description": "A complete Postman collection for the Earthquake Tracker API. This collection demonstrates RESTful API design, CRUD operations with MongoDB, and integration with the USGS Earthquake API. It provides ready-to-run requests for creating, updating, deleting, and retrieving feeds, as well as fetching real-time earthquake data. Ideal for testing, documentation, and showcasing backend functionality.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "51020429",
+		"_collection_link": "https://fortitude2026-966306.postman.co/workspace/Allison's-Workspace~de47435c-6e82-45dd-86a0-9aeab8ec694f/collection/51020429-d4a039e0-19e7-4d93-b7ab-082f98c702d1?action=share&source=collection_link&creator=51020429"
+	},
+	"item": [
+		{
+			"name": "Feeds",
+			"item": [
+				{
+					"name": "List Feeds",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/feeds",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"feeds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Feed",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"West Coast\",\n  \"minMagnitude\": 3.5\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/feeds",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"feeds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Feed by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/feeds/1\n",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"feeds",
+								"1\n"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Feed",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"minMagnitude\": 4.0\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/feeds/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"feeds",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Feed",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/feeds/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"feeds",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Earthquakes",
+			"item": [
+				{
+					"name": "Earthquakes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/earthquakes?minmagnitude=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"earthquakes"
+							],
+							"query": [
+								{
+									"key": "minmagnitude",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

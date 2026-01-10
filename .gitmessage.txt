@@ -1,0 +1,14 @@
+# Commit Message Template
+
+# <type>: <short summary>
+# Types: feat | fix | docs | style | refactor | test | chore
+
+# Example:
+# feat: add earthquake table to frontend
+
+# Description (optional):
+# - What changed?
+# - Why did it change?
+
+# Ticket/Issue (optional):
+# Closes #123

@@ -79,7 +79,7 @@ EarthQuakeTracker/
 ### **1. Clone the repository**
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/earthquake-tracker.git
+git clone https://github.com/allisonvaldez/earthquake-tracker.git
 cd earthquake-tracker
 ```
 
@@ -204,12 +204,4 @@ This makes your repo more visually appealing.
 
 - Designing REST APIs with Express  
 - Integrating third‑party APIs (USGS)  
-- Using MongoDB + Mongoose for persistence  
-- Building a simple frontend that consumes an API  
-- Structuring a full‑stack project professionally  
-
----
-
-## 📜 License
-
-MIT License.
+- Using MongoDB + Mongoose
