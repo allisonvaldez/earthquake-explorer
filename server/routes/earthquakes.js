@@ -1,15 +1,17 @@
 /*
-This file is for the Express router for the /earthquake endpoint. This tells Express which controller function runs when an request comes in.
+This file is for the Express router for the /routes/earthquake endpoint. This tells Express which controller function runs when an request comes in.
 */
 
-// Load express by creating a router object to handle only earthquake related routes
-const router = require("express").Router();
+// Create Express app
+import express from "express";
+// Get the getEarthquakes function from the controller file
+import { getEarthquakes } from "../controllers/earthquakes.js";
 
-// Import the earthquakes controller from the proper file for handling requests. Remember this function fetches and simplifies earthquake data
-const ctrl = require("../controllers/earthquakesController");
+// Create a router object to handle only earthquake related routes
+const router = express.Router();
 
 // Define the route this connects the URL to the controller logic
-router.get("/", ctrl.list);
+router.get("/", getEarthquakes);
 
 // Export the router for the rest of the app to be used globally
-module.exports = router;
+export default router;
