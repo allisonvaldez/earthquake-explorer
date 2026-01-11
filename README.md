@@ -178,7 +178,6 @@ The UI allows you to:
 ---
 
 ## 🧪 Postman Collection
-
 A complete Postman collection is included:
 
 ```
@@ -189,19 +188,7 @@ Import it into Postman to test all endpoints quickly.
 
 ---
 
-## 📸 Screenshots (optional)
-
-Add screenshots of:
-- Your frontend dashboard  
-- Postman tests  
-- Terminal output  
-
-This makes your repo more visually appealing.
-
----
-
 ## 🧠 What I Learned
-
 - Designing REST APIs with Express  
 - Integrating third‑party APIs (USGS)  
 - Using MongoDB + Mongoose
