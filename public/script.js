@@ -42,8 +42,9 @@ async function fetchEarthquakes(minMagnitude, timeRange, region, depthRange, sor
     try {
         // Declare the response for a fetch
         const response = await fetch(
-            `http://localhost:5050/api/earthquakes?minMagnitude=${minMagnitude}&timeRange=${timeRange}&region=${region}&depthRange=${depthRange}&sortBy=${sortBy}`
+            `/.netlify/functions/earthquakes?minMagnitude=${minMagnitude}&timeRange=${timeRange}&region=${region}&depthRange=${depthRange}&sortBy=${sortBy}`
         );
+
 
         // Control if there is no response from the API
         if (!response.ok) {

@@ -1,12 +1,14 @@
 {
-  "name": "earthquaketracker",
+  "name": "earthquake-backend",
   "version": "1.0.0",
-  "type": "module",
-  "description": "test",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0",
+    "cors": "^2.8.5"
   },
   "test": "echo \"Error: no test specified\" && exit 1",
   "repository": {
@@ -20,13 +22,6 @@
     "url": "https://github.com/fortitude2026/EarthQuakeTracker/issues"
   },
   "homepage": "https://github.com/fortitude2026/EarthQuakeTracker#readme",
-  "dependencies": {
-    "axios": "^1.13.2",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "node-fetch": "^3.3.2"
-  },
   "devDependencies": {
     "nodemon": "^3.1.11"
   }

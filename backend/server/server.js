@@ -28,8 +28,6 @@ app.get("/", (req, res) => {
     res.json({ message: "Earthquake API is running" })
 });
 
-// Set the Port to listen on 3000 and start the server locally and in production
+// Set the Port to listen on 5050
 const PORT = process.env.PORT || 5050;
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
