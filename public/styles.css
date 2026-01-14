@@ -85,11 +85,12 @@ li {
 }
 
 #map {
-    flex: 2;
-    height: 100%;
+    height: 500px;
+    width: 100%;
     border-radius: 8px;
     overflow: hidden;
 }
+
 
 label {
     font-weight: 500;
