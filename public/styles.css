@@ -7,9 +7,8 @@ body {
 
 .container {
     max-width: 1400px;
-    margin: auto;
+    margin: 0 auto;
 }
-
 
 h1 {
     text-align: center;
@@ -22,8 +21,7 @@ input {
 
 button {
     padding: 10px;
-    margin: 5px 0;
-    margin-bottom: 20px;
+    margin: 5px 0 20px;
     width: 100%;
     font-size: 16px;
     background: #0078ff;
@@ -53,8 +51,6 @@ button:hover {
     gap: 20px;
     width: 100%;
     margin-top: 20px;
-    max-width: 1400px;
-    margin: 20px auto;
 }
 
 /* Map gets 2/3 of the space */
@@ -79,6 +75,7 @@ button:hover {
 #results ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 #results li {
@@ -99,4 +96,19 @@ li {
 
 label {
     font-weight: 500;
+}
+
+/* Mobile: stack map and results so nothing is a tiny column */
+@media (max-width: 900px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    #map {
+        height: 400px;
+    }
+
+    #results {
+        max-height: none;
+    }
 }
