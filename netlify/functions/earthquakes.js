@@ -1,19 +1,14 @@
 // netlify/functions/earthquakes.js
 
-// This replaces Express server + routes
-// It handles: CORS, query params, USGS fetch, and returns JSON
-
 export async function handler(event, context) {
     console.log(">>> NETLIFY FUNCTION LOADED <<<");
 
-    // CORS headers (Netlify requires manual return)
     const headers = {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "GET",
     };
 
-    // Handle preflight OPTIONS request
     if (event.httpMethod === "OPTIONS") {
         return {
             statusCode: 200,
@@ -22,9 +17,7 @@ export async function handler(event, context) {
         };
     }
 
-    // Equivalent of your Express route: /api/earthquakes
     try {
-        // Read query parameters 
         const {
             minMagnitude = "4",
             timeRange = "week",
@@ -33,7 +26,6 @@ export async function handler(event, context) {
             sortBy = "recent",
         } = event.queryStringParameters || {};
 
-        // Build USGS URL based on timeRange
         const timeMap = {
             hour: "all_hour",
             day: "all_day",
@@ -42,7 +34,8 @@ export async function handler(event, context) {
         };
 
         const usgsFeed = timeMap[timeRange] || "all_week";
-        const usgsUrl = `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/${usgsFeed}.geojson`;
+        const usgsUrl =
+            `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/${usgsFeed}.geojson`;
 
         const response = await fetch(usgsUrl);
         if (!response.ok) {
@@ -56,7 +49,6 @@ export async function handler(event, context) {
         const usgsData = await response.json();
         const features = usgsData.features || [];
 
-        // Convert USGS data into proper format
         let quakes = features.map((f) => ({
             magnitude: f.properties.mag,
             place: f.properties.place,
@@ -66,7 +58,6 @@ export async function handler(event, context) {
             longitude: f.geometry.coordinates[0],
         }));
 
-        // Apply  filters
         quakes = quakes.filter((q) => q.magnitude >= Number(minMagnitude));
 
         if (depthRange !== "all") {
@@ -74,7 +65,6 @@ export async function handler(event, context) {
             quakes = quakes.filter((q) => q.depth >= minD && q.depth <= maxD);
         }
 
-        // Sorting
         if (sortBy === "magnitude") {
             quakes.sort((a, b) => b.magnitude - a.magnitude);
         } else {
