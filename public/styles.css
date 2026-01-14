@@ -15,15 +15,16 @@ h1 {
     margin-bottom: 30px;
 }
 
-input,
-button {
-    padding: 10px;
-    margin: 5px 0;
-    width: 100%;
-    font-size: 16px;
+input {
+    margin-bottom: 10px;
 }
 
 button {
+    padding: 10px;
+    margin: 5px 0;
+    margin-bottom: 20px;
+    width: 100%;
+    font-size: 16px;
     background: #0078ff;
     color: white;
     border: none;
@@ -46,7 +47,26 @@ button:hover {
 }
 
 #results {
+    flex: 1;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-y: auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
+}
+
+#results ul {
+    list-style: none;
+    padding: 0;
+}
+
+#results li {
+    background: #fafafa;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border-left: 4px solid #4caf50;
 }
 
 ul {
@@ -55,4 +75,22 @@ ul {
 
 li {
     margin-bottom: 8px;
+}
+
+.layout {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    height: calc(100vh - 200px);
+}
+
+#map {
+    flex: 2;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+label {
+    font-weight: 500;
 }

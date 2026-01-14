@@ -1,12 +1,21 @@
+console.log(">>> SERVER FILE LOADED <<<");
 // Create Express app
 import express from "express";
 // Security protocol to allow the browser to communicate with the backend
 import cors from "cors";
 // Import needed routes
-import earthquakeRoutes from "../routes/earthquakes.js";
+import earthquakeRoutes from "./routes/earthquakes.js";
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: "*",
+    methods: ["GET"],
+    allowedHeaders: ["Content-Type"]
+}));
+
+app.get("/cors-test", (req, res) => {
+    res.json({ ok: true });
+});
 
 // Allow for the Express server to understand incoming JSON data
 app.use(express.json());
@@ -20,7 +29,7 @@ app.get("/", (req, res) => {
 });
 
 // Set the Port to listen on 3000 and start the server locally and in production
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5050;
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });

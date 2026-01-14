@@ -1,194 +1,154 @@
-# 🌎 Earthquake Tracker (Node.js, Express, MongoDB)
+# 🌎 Earthquake Explorer (Node.js + Express + Leaflet)
 
-![Node.js](https://img.shields.io/badge/Node.js-18.x-green)
-![Express](https://img.shields.io/badge/Express.js-Backend-blue)
-![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen)
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Node.js](https://img.shields.io/badge/Node.js-Backend-green)
+![Express](https://img.shields.io/badge/Express.js-API-blue)
+![Leaflet](https://img.shields.io/badge/Leaflet-Maps-brightgreen)
 ![Status](https://img.shields.io/badge/Status-Active-success)
 
-A full‑stack application that tracks real‑time earthquake data using the USGS Earthquake API.  
-The backend is built with **Node.js + Express**, data is stored in **MongoDB**, and a simple **frontend dashboard** allows users to interact with the API.
+A full‑stack earthquake visualization dashboard that displays real‑time seismic activity from the **USGS Earthquake API**.  
+Users can filter, sort, and explore earthquakes on an interactive world map powered by **Leaflet.js**.
 
-This project demonstrates backend API design, CRUD operations, middleware, database integration, and a lightweight UI — perfect for showcasing full‑stack skills.
+This project demonstrates backend API design, data transformation, service‑layer architecture, and interactive frontend mapping — ideal for showcasing full‑stack engineering skills.
 
 ---
 
 ## 🚀 Features
 
-### **Backend**
-- RESTful API architecture  
-- CRUD operations for user‑defined earthquake “feeds”  
-- Real‑time earthquake data from USGS  
-- Custom middleware (logger, error handler)  
-- Environment variable support with dotenv  
-- Modular controllers, routes, and services  
+### 🌐 Frontend
+- Interactive world map using **Leaflet.js**
+- Dynamic earthquake markers sized and colored by magnitude
+- Click‑to‑zoom from list → map
+- Popups showing magnitude, depth, time, and location
+- Clean UI for filtering and sorting:
+  - Magnitude filter  
+  - Time range (day, week, month)  
+  - Region filter (California, Japan, Alaska, Worldwide)  
+  - Depth filter (shallow, intermediate, deep)  
+  - Sorting (largest first, most recent first)
 
-### **Database**
-- MongoDB for persistent storage  
-- Mongoose models & validation  
+### 🖥️ Backend
+- Node.js + Express REST API
+- Controller → Service architecture
+- Fetches live data from the **USGS GeoJSON Feed**
+- Applies:
+  - Magnitude filtering  
+  - Region bounding box filtering  
+  - Depth filtering  
+  - Sorting  
+- Returns clean JSON for frontend consumption
 
-### **Frontend**
-- Simple dashboard built with HTML/CSS/JavaScript  
-- Create, list, and manage feeds  
-- Fetch and display earthquake data  
-
-### **Tooling**
-- Nodemon for development  
-- Postman collection included  
-- Clean project structure  
+### 🧰 Tooling
+- Nodemon for development
+- Modular, maintainable project structure
 
 ---
 
 ## 📁 Project Structure
 
 ```
-EarthQuakeTracker/
-│
-├── index.js
-├── package.json
-├── .env
+earthquake-explorer/
 │
 ├── server/
 │   ├── controllers/
-│   │   ├── feedsController.js
-│   │   └── earthquakesController.js
-│   ├── middleware/
-│   │   ├── logger.js
-│   │   └── errorHandler.js
-│   ├── models/
-│   │   └── Feed.js
+│   │   └── earthquakes.js
 │   ├── routes/
-│   │   ├── feeds.js
 │   │   └── earthquakes.js
 │   └── services/
-│       └── usgsService.js
+│       └── earthquakeService.js
 │
-├── client/
+├── public/
 │   ├── index.html
 │   ├── style.css
-│   └── app.js
+│   └── script.js
 │
-└── postman/
-    └── EarthquakeTracker.postman_collection.json
+└── index.js
 ```
 
 ---
 
 ## 🛠️ Getting Started
 
-### **1. Clone the repository**
-
+### 1. Clone the repository
 ```bash
-git clone https://github.com/allisonvaldez/earthquake-tracker.git
-cd earthquake-tracker
+git clone https://github.com/allisonvaldez/earthquake-explorer.git
+cd earthquake-explorer
 ```
 
-### **2. Install dependencies**
-
+### 2. Install dependencies
 ```bash
 npm install
 ```
 
-### **3. Create a `.env` file**
-
-```
-PORT=3000
-MONGO_URI=mongodb://localhost:27017/earthquake_tracker
-```
-
-### **4. Start MongoDB**
-
-If using Homebrew on macOS:
-
+### 3. Start the server
 ```bash
-brew services start mongodb-community
-```
-
-Or run MongoDB manually if installed another way.
-
-### **5. Start the server**
-
-```bash
-npm run dev
+npm start
 ```
 
 Server runs at:
-
 ```
-http://localhost:3000
+http://localhost:5050
+```
+
+### 4. Open the frontend
+Open `public/index.html` in your browser  
+(or use VS Code Live Server)
+
+---
+
+## 📡 API Endpoint
+
+### GET /api/earthquakes
+
+Query parameters:
+
+| Parameter | Example | Description |
+|----------|----------|-------------|
+| `minMagnitude` | `4` | Minimum magnitude |
+| `timeRange` | `week` | `day`, `week`, or `month` |
+| `region` | `california` | Region bounding box |
+| `depthRange` | `shallow` | `shallow`, `intermediate`, `deep`, `all` |
+| `sortBy` | `mag_desc` | Sorting option |
+
+Example request:
+```
+/api/earthquakes?minMagnitude=4&timeRange=week&region=california&depthRange=shallow&sortBy=mag_desc
 ```
 
 ---
 
-## 📡 API Endpoints
+## 🎨 Frontend UI
 
-### **Feeds**
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/feeds` | List all feeds |
-| POST | `/api/feeds` | Create a feed |
-| GET | `/api/feeds/:id` | Get feed by ID |
-| PUT | `/api/feeds/:id` | Update feed |
-| DELETE | `/api/feeds/:id` | Delete feed |
-
-### **Earthquakes**
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/earthquakes?minmagnitude=4` | Fetch earthquakes from USGS |
-
----
-
-## 🗄️ Database (MongoDB)
-
-MongoDB stores all user‑created feeds.
-
-### **Feed Model Example**
-
-```js
-const mongoose = require('mongoose');
-
-const FeedSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  minMagnitude: { type: Number, required: true },
-  createdAt: { type: Date, default: Date.now }
-});
-
-module.exports = mongoose.model('Feed', FeedSchema);
-```
-
----
-
-## 🎨 Frontend
-
-A simple dashboard lives in the `/client` folder.
-
-To use it:
-
-1. Start your backend  
-2. Open `client/index.html` in your browser  
-
-The UI allows you to:
-- Create feeds  
-- List feeds  
-- Fetch earthquakes  
-- Display results in a table  
-
----
-
-## 🧪 Postman Collection
-A complete Postman collection is included:
-
-```
-/postman/EarthquakeTracker.postman_collection.json
-```
-
-Import it into Postman to test all endpoints quickly.
+The dashboard allows users to:
+- Search earthquakes by filters  
+- View results in a list  
+- Click a list item to zoom to the marker  
+- Explore earthquakes visually on a world map  
 
 ---
 
 ## 🧠 What I Learned
-- Designing REST APIs with Express  
-- Integrating third‑party APIs (USGS)  
-- Using MongoDB + Mongoose
+
+- How to structure a backend using controllers, routes, and services  
+- How to consume and transform external API data  
+- How to build interactive maps with Leaflet  
+- How to design a clean filtering and sorting system  
+- How to connect frontend UI → backend API → map visualization  
+
+---
+
+## 📌 Future Enhancements
+
+- Hover highlight (list ↔ marker)
+- Marker → list linking
+- Pagination for large datasets
+- Dark mode
+- Earthquake details side panel
+
+---
+
+## 👤 Author
+
+**Allison Valdez**  
+Full‑Stack Software Engineer  
+GitHub: https://github.com/allisonvaldez  
+LinkedIn: *add your link here*
