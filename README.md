@@ -5,10 +5,24 @@
 ![Leaflet](https://img.shields.io/badge/Leaflet-Maps-brightgreen)
 ![Status](https://img.shields.io/badge/Status-Active-success)
 
-A full‑stack earthquake visualization dashboard that displays real‑time seismic activity from the **USGS Earthquake API**.  
-Users can filter, sort, and explore earthquakes on an interactive world map powered by **Leaflet.js**.
+A full‑stack earthquake visualization dashboard that displays real‑time seismic activity from the **USGS Earthquake API** — now live at **https://earthquake-explorer.netlify.app**.
 
+Users can filter, sort, and explore earthquakes on an interactive world map powered by **Leaflet.js**.  
 This project demonstrates backend API design, data transformation, service‑layer architecture, and interactive frontend mapping — ideal for showcasing full‑stack engineering skills.
+
+---
+
+## 🔗 Live Demo
+
+👉 **https://earthquake-explorer.netlify.app**
+
+---
+
+## 🧪 Tech Stack
+
+- **Frontend:** HTML, CSS, JavaScript, Leaflet.js  
+- **Backend:** Node.js, Express.js  
+- **Deployment:** Netlify (frontend), local Node server (API)
 
 ---
 
@@ -151,4 +165,4 @@ The dashboard allows users to:
 **Allison Valdez**  
 Full‑Stack Software Engineer  
 GitHub: https://github.com/allisonvaldez  
-LinkedIn: *add your link here*
+LinkedIn: (https://www.linkedin.com/in/alyv/)
