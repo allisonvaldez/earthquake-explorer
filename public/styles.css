@@ -6,9 +6,10 @@ body {
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1400px;
     margin: auto;
 }
+
 
 h1 {
     text-align: center;
@@ -46,14 +47,33 @@ button:hover {
     margin-top: 10px;
 }
 
+.layout {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+    max-width: 1400px;
+    margin: 20px auto;
+}
+
+/* Map gets 2/3 of the space */
+#map {
+    flex: 2;
+    height: 500px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Results get 1/3 of the space */
 #results {
     flex: 1;
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
+    max-height: 500px;
     overflow-y: auto;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
 }
 
 #results ul {
@@ -76,21 +96,6 @@ ul {
 li {
     margin-bottom: 8px;
 }
-
-.layout {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-    height: calc(100vh - 200px);
-}
-
-#map {
-    height: 500px;
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
 
 label {
     font-weight: 500;
